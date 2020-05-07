@@ -4,6 +4,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "ejs": "^3.0.1",
+    "ejs-electron": "^2.0.3",
+    "electron-quick-start": "file:electron",
     "express": "^4.6.1",
     "requests": "^0.3.0",
     "supervisor": "^0.12.0"

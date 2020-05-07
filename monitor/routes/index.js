@@ -2,10 +2,19 @@ const jobs = require('./../middlewares/job')
 const projects = require('./../middlewares/project')
 const clusters = require('./../middlewares/cluster')
 const router = require('express').Router()
+const ejse = require('ejs-electron')
 
 
 // home page
 router.get('/', function(req, res) {
+    var electron = 'off';
+    if (req.query.electron) electron = req.query.electron;
+    var ihm = ''
+    if (req.query.json) ihm = req.query.json;
+    console.log('electron',electron)
+    console.log('ihm',ihm)
+    ejse.data('electron', 'on');
+    ejse.data('json', 'ihm.json');
     res.render('pages/index');
 });
 
