@@ -15,9 +15,18 @@ function createWindow() {
       webSecurity: false
     }
   });
-  
-  mainWindow.loadURL( "http://localhost:8000?electron=on&json=ihm.json");
 
+  var args = require('minimist')(process.argv);
+    ihm_data={};
+    ihm_file='';
+    if (args.hasOwnProperty('ihm')) {
+        ihm_data = require(args['ihm'])['ihm'];
+        ihm_file = args['ihm'];
+        mainWindow.loadURL( "http://localhost:8000?electron=on&ihm_file=" + ihm_file);
+    }
+    else {
+        mainWindow.loadURL( "http://localhost:8000?electron=on");
+    }
   mainWindow.on("closed", () => {
     mainWindow = null;
   });

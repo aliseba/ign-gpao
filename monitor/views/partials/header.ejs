@@ -10,21 +10,10 @@
         <a class="nav-item nav-link" href="/job">Jobs</a>
         <a class="nav-item nav-link" href="/cluster">Cluster</a>
         <a class="nav-item nav-link" href="/project">Projects</a>
-        <%_ if (electron == 'on') { %>
-            <a class="nav-item nav-link" href=javascript:void(0); onclick="loadJson('<%=json%>')">New project</a>
-            <!-- script src="../../electron/renderer-process/jsonloader.js"</script-->
-            <script>
-            function loadJson (jsonfile)
-            {
-                console.log('__dirname', __dirname);
-                const remote = require('electron').remote;
-                var jsonfile = '../data/'+jsonfile;
-                ihm_data = require(jsonfile)['ihm'];
-                remote.getCurrentWindow().loadURL('file://' + __dirname + '/../views/pages/creation.ejs', {electron:'on', json:ihm_data})
-            }
-            </script>
-        <% } else { %>
-            <% console.log('electron not on', electron)  %>
+        <%_ if (locals.electron == 'on') { %>
+            <% console.log('ihm_file (header.ejs)', locals.ihm_file) %>
+            <% uri_component=encodeURIComponent(locals.ihm_file) %>
+            <a class="nav-item nav-link" href="/creation/<%=electron%>/<%=uri_component%>">Create project</a>
         <% } %>
       </div>
     </div>
