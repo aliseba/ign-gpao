@@ -65,8 +65,14 @@ router.get('/creation/:electron/:ihm_file', function(req, res) {
            console.log('ihm_file (index.js)', req.params.ihm_file)
            const fs = require('fs');
            let rawdata = fs.readFileSync(req.params.ihm_file);
-           let ihm_data = JSON.parse(rawdata);
-           ihm_data =require(req.params.ihm_file)['ihm']
+           ihm_data = JSON.parse(rawdata);
+           if (ihm_data.hasOwnProperty('ihm')) {
+               ihm_data = ihm_data['ihm'];
+           }
+           else {
+               ihm_data = {}
+               console.log('uncorrect json file for ihm description')
+           }
     }
     res.render('pages/creation', {electron:electron,ihm_data:ihm_data})
 })

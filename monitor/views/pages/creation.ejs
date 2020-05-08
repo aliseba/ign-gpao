@@ -26,7 +26,6 @@
                 <% if (locals.electron) { %>
                 <%    electron='on'; %>
                 <% } %>
-                <% console.log('electron:',electron)%>
                 <% for(var myKey in ihm_data ) { %>
                     <%- include("../ihm/readJsonContent",{content:ihm_data[myKey],custom_style:'p',electron,electron}) %>
                 <% } %>
