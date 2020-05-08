@@ -1,7 +1,6 @@
 const electron = require("electron");
 const app = electron.app;
 const path = require("path");
-const ejse = require('ejs-electron')
 
 const BrowserWindow = electron.BrowserWindow;
 
@@ -12,13 +11,12 @@ function createWindow() {
     "width": 1200,
     "height": 1200,
     "webPreferences": {
-      nodeIntegration: true
+      nodeIntegration: true,
+      webSecurity: false
     }
   });
-    ejse.data('electron', 'on');
-    ejse.data('json', 'ihm.json');
-
-  mainWindow.loadURL( "http://localhost:8000?electron='on'&json='ihm.json'");
+  
+  mainWindow.loadURL( "http://localhost:8000?electron=on&json=ihm.json");
 
   mainWindow.on("closed", () => {
     mainWindow = null;
