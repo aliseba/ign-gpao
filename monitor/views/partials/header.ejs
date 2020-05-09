@@ -10,10 +10,6 @@
         <a class="nav-item nav-link" href="/job">Jobs</a>
         <a class="nav-item nav-link" href="/cluster">Cluster</a>
         <a class="nav-item nav-link" href="/project">Projects</a>
-        <%_ if (locals.electron == 'on' && locals.ihm_file.length > 0) { %>
-            <% uri_component=encodeURIComponent(locals.ihm_file) %>
-            <a class="nav-item nav-link" href="/creation/<%=electron%>/<%=uri_component%>">Create project</a>
-        <% } %>
       </div>
     </div>
   </nav>

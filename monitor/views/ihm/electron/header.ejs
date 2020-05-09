@@ -10,7 +10,11 @@
         <a class="nav-item nav-link" href="../pages/job.ejs">Jobs</a>
         <a class="nav-item nav-link" href="../pages/ressource.ejs">Ressource</a>
         <a class="nav-item nav-link" href="../pages/project.ejs">Chantier</a>
-        <a class="nav-item nav-link" href="../pages/creation.ejs">Creation</a>
-      </div>
+        
+        <form name="create-project" method="post" action="/creation">
+           <a href="#" onclick="get_ihm_data()">Nouveau Projet</a>
+           <script>   function get_ihm_data() {   return <%=ihm_data%>   }   </script>
+        </form>
+        </div>
     </div>
   </nav>

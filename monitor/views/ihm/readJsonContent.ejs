@@ -3,8 +3,6 @@
 <%_ var numpage=0; %>
 
 <%_ for(var myKey in content) { %>
-<% console.log( 'myKey:', myKey) %>
-
   <%_ if (content[myKey].hasOwnProperty('Type')) { %>
     <% if (content[myKey]['Type'] == 'Page') { %>
         <% console.log( 'on parse la page:', numpage, content[myKey]['Name']) %>
