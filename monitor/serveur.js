@@ -21,3 +21,9 @@ app.use('/', routes);
 
 app.listen(PORT);
 console.log("URL du moniteur : http://"+URL_API+":"+PORT)
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
+console.log('server root:', appDir)
+
+app.use(express.static('electron/renderer-process'));
+app.use(express.static('views'));

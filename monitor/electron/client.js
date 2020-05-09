@@ -18,13 +18,10 @@ function createWindow() {
     var url="http://localhost:8000";
     var args = require('minimist')(process.argv);
     if (args.hasOwnProperty('ihm')) {
-        
-        //mainWindow.loadURL( url + '/creation?electron=on' );
-
         const fs = require('fs');
         let rawdata = fs.readFileSync(args['ihm']);
         
-        mainWindow.loadURL(url + '/creation?electron=on', {
+        mainWindow.loadURL(url + '/creation', {
           postData: [{
             type: "rawData",
             bytes: Buffer.from(rawdata)
