@@ -26,4 +26,3 @@ var appDir = path.dirname(require.main.filename);
 console.log('server root:', appDir)
 
 app.use(express.static('electron/renderer-process'));
-app.use(express.static('views'));
