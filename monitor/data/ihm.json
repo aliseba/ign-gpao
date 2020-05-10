@@ -1204,6 +1204,7 @@
                 }
             ],
             "commands":[
+                {"execute":"open $PARAM$"},
                 {"execute":"/Applications/SolVeg.app/Contents/MacOS/SolVeg --make -i $PARAM$ -o $DIRECTORY$/gpao.json"},
                 {"execute":"open -a xcode $DIRECTORY$/gpao.json"}
             ]
