@@ -5,6 +5,7 @@ const path = require("path");
 const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow;
+var url="http://localhost:8000";
 
 function createWindow() {
     mainWindow = new BrowserWindow({
@@ -15,23 +16,24 @@ function createWindow() {
            webSecurity: false
         }
     });
-    var url="http://localhost:8000";
-    var args = require('minimist')(process.argv);
-    if (args.hasOwnProperty('ihm')) {
-        const fs = require('fs');
-        let rawdata = fs.readFileSync(args['ihm']);
-        
-        mainWindow.loadURL(url + '/creation', {
-          postData: [{
-            type: "rawData",
-            bytes: Buffer.from(rawdata)
-          }],
-          extraHeaders: "Content-Type: application/x-www-form-urlencoded; charset=UTF-8"
-        });
-    }
-    else {
-        mainWindow.loadURL( url );
-    }
+
+  var args = require('minimist')(process.argv);
+  if (args.hasOwnProperty('ihm')) {
+      const fs = require('fs');
+      let rawdata = fs.readFileSync(args['ihm']);
+      
+      mainWindow.loadURL(url + '/creation', {
+        postData: [{
+          type: "rawData",
+          bytes: Buffer.from(rawdata)
+        }],
+        extraHeaders: "Content-Type: application/x-www-form-urlencoded; charset=UTF-8"
+      });
+  }
+  else {
+      mainWindow.loadURL( url );
+  }
+
   mainWindow.on("closed", () => {
     mainWindow = null;
   });

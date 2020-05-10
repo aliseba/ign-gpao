@@ -87,13 +87,15 @@ exports.retrieve_parameters = function (myForm) {
 }
 
 exports.save_parameters=function(parameters, filename) {
-   jsonParams={};
+    jsonParams={};
     jsonParams['parameters'] = parameters;
+    console.log('save ', parameters, 'in ', filename)
     try {
+        var fs = require('fs');
         fs.writeFileSync(filename, JSON.stringify(jsonParams, null, '\t'), 'utf-8');
     }
     catch(e) {
-        console.log('cannot save file ', filename);
+        console.log('cannot save file ', filename, e);
     }
 }
         

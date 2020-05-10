@@ -72,5 +72,11 @@ router.post('/creation', function(req, res) {
     })
 })
 
+// new project page
+router.post('/creategpao', function(req, res) {
+    console.log("index.js: creategpao")
+    
+})
+
 
 module.exports = router

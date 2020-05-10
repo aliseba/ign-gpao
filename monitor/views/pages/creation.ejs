@@ -32,11 +32,14 @@
                 <% if (ihm_data.hasOwnProperty('dependencies')) { %>
                     <%- include("../ihm/buildDependencies", {dependencies:ihm_data['dependencies']}) %>
                 <% } %>
+                <% if (ihm_data.hasOwnProperty('oncreate')) { %>
+                    <%- include("../ihm/buildCommands", {oncreate:ihm_data['oncreate']}) %>
+                <% } %>
              </div>
          </div>
          <% if (electron == 'on') { %>
             <%- include("../ihm/electron/fileloader.ejs", {id:'load-project',params:'gpao-params'}) %>
-            <%- include("../ihm/electron/filesaver.ejs", {id:'create-project',params:'gpao-params'}) %>
+            <%- include("../ihm/electron/oncreate.ejs", {id:'create-project',params:'gpao-params'}) %>
          <%} else { %>
             <button >Créer le chantier</button>
          <% } %>

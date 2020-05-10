@@ -1191,14 +1191,13 @@
             "Type":"Dependency",
             "Inverse":true
         }],
-        "on_validate": [
-        {
-            "command":"/Applications/SolVeg.app/Contents/MacOS/SolVeg -i $PARAM$ -o /Users/nbellaiche/DATA/TEMP/gpao.json",
-            "environment":[]
-        },
-        {
-            "command":"open -a xcode /Users/nbellaiche/DATA/TEMP/gpao.json"
+        "oncreate":{
+            "directory":"/Users/nbellaiche/DATA/TEMP/",
+            "environment":[],
+            "commands":[
+                {"execute":"/Applications/SolVeg.app/Contents/MacOS/SolVeg -i $PARAM$ -o $DIRECTORY$/gpao.json"},
+                {"execute":"open -a xcode $DIRECTORY$/gpao.json"}
+            ]
         }
-        ]
     }
 }
