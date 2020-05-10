@@ -88,7 +88,7 @@ exports.retrieve_parameters = function (myForm) {
 
 exports.save_parameters=function(parameters, filename) {
     jsonParams={};
-    jsonParams['parameters'] = parameters;
+    jsonParams['param'] = parameters;
     console.log('save ', parameters, 'in ', filename)
     try {
         var fs = require('fs');
