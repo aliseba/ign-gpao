@@ -13,13 +13,14 @@
     
     const exec = require('child_process').exec;
 
-    function execute(command, callback) {
-        exec(command, (error, stdout, stderr) => {
+    function execute(command, environment_exec, callback) {
+        console.log('environment_exec', JSON.stringify(environment_exec))
+        exec(command, environment_exec,(error, stdout, stderr) => {
             callback(stdout);
         });
     };
     
-     let onButtonClick_test = function() {
+     let onButtonClick = function() {
         if (myForm == undefined)   {
             dialog.showErrorBox('Error', 'impossible to find a form of class ' + document.currentScript.getAttribute('params'))
         }
@@ -31,14 +32,24 @@
         }
          
         let  directory  = commands[0].getAttribute('directory');
-        console.log('commands[0]: ', commands[0])
         console.log('directory: ', directory)
         var path = require('path');
         var filename = path.join(directory, 'parameters.json');
         formreader.save_parameters(jsonData, filename)
+         
+         var  environmentlist = commands[0].getElementsByTagName('environment');
+         var environment_exec = {}
+         environment_exec['env'] = {}
+         for (var i = 0; i < environmentlist.length; i++) {
+             var my_env = environmentlist[i];
+             if (my_env.hasAttribute('name') && my_env.hasAttribute('value')) {
+                 //process.env[my_env['name']] = my_env['value'];
+                 //environment_exec[my_env['name']] = my_env['value'];
+                 environment_exec['env'][my_env.getAttribute('name')] = my_env.getAttribute('value');
+             }
+         }
                 
          var  executelist = commands[0].getElementsByTagName('execute');
-
          for (var i in executelist) {
              var cmd = executelist[i].innerHTML;
              if (cmd == null) {
@@ -49,7 +60,7 @@
              console.log('cmd:', cmd)
              
              // call the function
-             execute(cmd, (output) => {
+             execute(cmd, environment_exec, (output) => {
                  console.log(output);
              });
          }
@@ -79,7 +90,7 @@
       form.submit();
    }
 
-    let onButtonClick = function() {
+    let onButtonClick_bkp = function() {
         if (myForm == undefined)   {
             dialog.showErrorBox('Error', 'impossible to find a form of class ' + document.currentScript.getAttribute('params'))
         }
@@ -107,5 +118,5 @@
     };
     
     let  asyncBtn  = document.querySelector('#'+document.currentScript.getAttribute('name'));
-    asyncBtn.addEventListener("click", onButtonClick_test);
+    asyncBtn.addEventListener("click", onButtonClick);
 }

@@ -1193,9 +1193,18 @@
         }],
         "oncreate":{
             "directory":"/Users/nbellaiche/DATA/TEMP/",
-            "environment":[],
+            "environment":[
+                {
+                    "name":"IGN_DATA",
+                    "value":"/Applications/SolVeg.app/Contents/Data"
+                },
+                {
+                    "name":"PROJ_LIB",
+                    "value":"/Applications/SolVeg.app/Contents/Data/geodesy/nad"
+                }
+            ],
             "commands":[
-                {"execute":"/Applications/SolVeg.app/Contents/MacOS/SolVeg -i $PARAM$ -o $DIRECTORY$/gpao.json"},
+                {"execute":"/Applications/SolVeg.app/Contents/MacOS/SolVeg --make -i $PARAM$ -o $DIRECTORY$/gpao.json"},
                 {"execute":"open -a xcode $DIRECTORY$/gpao.json"}
             ]
         }

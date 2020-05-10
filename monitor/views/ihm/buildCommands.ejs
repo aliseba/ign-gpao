@@ -2,7 +2,7 @@
 <commands directory="<%=oncreate['directory']%>">
     <%_ for(var i in oncreate['environment']) { %>
         <% let env=oncreate['environment'][i] %>
-        <env name="<%=cmd.environment[j]['name']%>" value="<%=cmd.environment[j]['value']%>" >
+        <environment name="<%=env['name']%>" value="<%=env['value']%>" >
     <% } %>
     <%_ for(var i in oncreate['commands']) { %>
         <% let cmd=oncreate['commands'][i] %>
